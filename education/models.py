@@ -1,9 +1,6 @@
 from django.db import models
 from .choices import district_choices, subject_choices
 
-#from .models import Course
-#from .models import School, Tutor
-
 # Create your models here.
 class School(models.Model):
     title = models.CharField(max_length=200)
@@ -18,8 +15,8 @@ class School(models.Model):
     
     def __str__(self):
         return self.title
-    # class Meta:
-    #     db_table = 'schools_school'
+    class Meta:
+        db_table = 'schools_school'
 
 
 class Tutor(models.Model):
@@ -45,7 +42,6 @@ class Tutor(models.Model):
 
 
 class Course(models.Model): 
-    #syllabus = models.ManyToManyField(Curriculum, blank=True)
 
     CLASS_TYPE_CHOICES = [
         ('live', 'Live'),
@@ -135,17 +131,3 @@ class Course(models.Model):
         return self.title
     class Meta:
         db_table = 'courses_course'
-
-        
-# class Curriculum(models.Model):
-#     name = models.CharField(max_length=50,
-#                         choices=subject_choices,
-#                         default='Chinese',
-#                         help_text='Subject matter of the curriculum'
-#                         )
-# text = models.TextField(blank=True,
-#                         null=True,
-#                         help_text='Detailed syllabus of the curriculum'
-#                         )
-# def __str__(self):
-#     return self.name
